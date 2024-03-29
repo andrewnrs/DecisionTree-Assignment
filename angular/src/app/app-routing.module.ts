@@ -2,6 +2,17 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+    {
+        path: 'page-service',
+        loadChildren: () => import('@page-service')
+            .then(m => m.PageServiceModule.forLazy())
+    },
+    {
+      path: 'page-service2',
+      loadChildren: () => import('@page-service')
+          .then(m => m.PageServiceModule.forLazy())
+  },
+
   {
     path: '',
     pathMatch: 'full',

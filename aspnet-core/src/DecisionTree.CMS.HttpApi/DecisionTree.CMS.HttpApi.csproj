@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DecisionTree.CMS.Application.Contracts\DecisionTree.CMS.Application.Contracts.csproj" />
-  </ItemGroup>
+  <ProjectReference Include="..\..\modules\PageService\src\PageService.HttpApi\PageService.HttpApi.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Account.HttpApi" Version="8.0.5" />

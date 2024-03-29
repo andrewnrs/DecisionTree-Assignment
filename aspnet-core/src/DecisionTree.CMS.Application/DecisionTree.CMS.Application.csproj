@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\DecisionTree.CMS.Domain\DecisionTree.CMS.Domain.csproj" />
     <ProjectReference Include="..\DecisionTree.CMS.Application.Contracts\DecisionTree.CMS.Application.Contracts.csproj" />
-  </ItemGroup>
+  <ProjectReference Include="..\..\modules\PageService\src\PageService.Application\PageService.Application.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Account.Application" Version="8.0.5" />

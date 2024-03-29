@@ -1,3 +1,4 @@
+import { PageServiceConfigModule } from '@page-service/config';
 import { AccountConfigModule } from '@abp/ng.account/config';
 import { CoreModule } from '@abp/ng.core';
 import { registerLocale } from '@abp/ng.core/locale';
@@ -19,6 +20,7 @@ import { SideMenuLayoutModule } from '@abp/ng.theme.lepton-x/layouts';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
 @NgModule({
   imports: [
+    PageServiceConfigModule.forRoot(),
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

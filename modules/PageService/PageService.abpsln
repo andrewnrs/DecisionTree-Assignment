@@ -1,0 +1,7 @@
+{
+  "modules": {
+    "PageService": {
+      "path": "PageService.abpmdl"
+    }
+  }
+}

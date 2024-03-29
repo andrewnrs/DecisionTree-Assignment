@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DecisionTree.CMS.Domain.Shared\DecisionTree.CMS.Domain.Shared.csproj" />
-  </ItemGroup>
+  <ProjectReference Include="..\..\modules\PageService\src\PageService.Domain\PageService.Domain.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Emailing" Version="8.0.5" />

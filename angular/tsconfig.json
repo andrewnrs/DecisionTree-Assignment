@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -22,6 +21,12 @@
       ],
       "@proxy/*": [
         "src/app/proxy/*"
+      ],
+      "@page-service": [
+        "projects/page-service/src/public-api.ts"
+      ],
+      "@page-service/config": [
+        "projects/page-service/config/src/public-api.ts"
       ]
     },
     "useDefineForClassFields": false

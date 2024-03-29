@@ -1,4 +1,4 @@
-﻿using DecisionTree.CMS.Localization;
+using DecisionTree.CMS.Localization;
 using Volo.Abp.AuditLogging;
 using Volo.Abp.BackgroundJobs;
 using Volo.Abp.FeatureManagement;
@@ -12,6 +12,7 @@ using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.Validation.Localization;
 using Volo.Abp.VirtualFileSystem;
+using PageService;
 
 namespace DecisionTree.CMS;
 
@@ -25,7 +26,8 @@ namespace DecisionTree.CMS;
     typeof(AbpSettingManagementDomainSharedModule),
     typeof(AbpTenantManagementDomainSharedModule)    
     )]
-public class CMSDomainSharedModule : AbpModule
+[DependsOn(typeof(PageServiceDomainSharedModule))]
+    public class CMSDomainSharedModule : AbpModule
 {
     public override void PreConfigureServices(ServiceConfigurationContext context)
     {

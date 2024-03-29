@@ -18,6 +18,9 @@ export const environment = {
     requireHttps: true,
   },
   apis: {
+    PageService: {
+      rootNamespace: 'PageService',
+    },
     default: {
       url: 'https://localhost:44380',
       rootNamespace: 'DecisionTree.CMS',

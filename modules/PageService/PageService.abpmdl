@@ -1,0 +1,111 @@
+{
+  "folders": {
+    "items": {
+      "src": {},
+      "test": {},
+      "host": {}
+    }
+  },
+  "packages": {
+    "PageService.Domain.Shared": {
+      "path": "src/PageService.Domain.Shared/PageService.Domain.Shared.abppkg",
+      "folder": "src"
+    },
+    "PageService.Domain": {
+      "path": "src/PageService.Domain/PageService.Domain.abppkg",
+      "folder": "src"
+    },
+    "PageService.Application.Contracts": {
+      "path": "src/PageService.Application.Contracts/PageService.Application.Contracts.abppkg",
+      "folder": "src"
+    },
+    "PageService.Application": {
+      "path": "src/PageService.Application/PageService.Application.abppkg",
+      "folder": "src"
+    },
+    "PageService.EntityFrameworkCore": {
+      "path": "src/PageService.EntityFrameworkCore/PageService.EntityFrameworkCore.abppkg",
+      "folder": "src"
+    },
+    "PageService.MongoDB": {
+      "path": "src/PageService.MongoDB/PageService.MongoDB.abppkg",
+      "folder": "src"
+    },
+    "PageService.HttpApi": {
+      "path": "src/PageService.HttpApi/PageService.HttpApi.abppkg",
+      "folder": "src"
+    },
+    "PageService.HttpApi.Client": {
+      "path": "src/PageService.HttpApi.Client/PageService.HttpApi.Client.abppkg",
+      "folder": "src"
+    },
+    "PageService.TestBase": {
+      "path": "test/PageService.TestBase/PageService.TestBase.abppkg",
+      "folder": "test"
+    },
+    "PageService.EntityFrameworkCore.Tests": {
+      "path": "test/PageService.EntityFrameworkCore.Tests/PageService.EntityFrameworkCore.Tests.abppkg",
+      "folder": "test"
+    },
+    "PageService.MongoDB.Tests": {
+      "path": "test/PageService.MongoDB.Tests/PageService.MongoDB.Tests.abppkg",
+      "folder": "test"
+    },
+    "PageService.Domain.Tests": {
+      "path": "test/PageService.Domain.Tests/PageService.Domain.Tests.abppkg",
+      "folder": "test"
+    },
+    "PageService.Application.Tests": {
+      "path": "test/PageService.Application.Tests/PageService.Application.Tests.abppkg",
+      "folder": "test"
+    },
+    "PageService.HttpApi.Host": {
+      "path": "host/PageService.HttpApi.Host/PageService.HttpApi.Host.abppkg",
+      "folder": "host"
+    },
+    "PageService.Web": {
+      "path": "src/PageService.Web/PageService.Web.abppkg",
+      "folder": "src"
+    },
+    "PageService.HttpApi.Client.ConsoleTestApp": {
+      "path": "test/PageService.HttpApi.Client.ConsoleTestApp/PageService.HttpApi.Client.ConsoleTestApp.abppkg",
+      "folder": "test"
+    },
+    "PageService.Web.Host": {
+      "path": "host/PageService.Web.Host/PageService.Web.Host.abppkg",
+      "folder": "host"
+    },
+    "PageService.AuthServer": {
+      "path": "host/PageService.AuthServer/PageService.AuthServer.abppkg",
+      "folder": "host"
+    },
+    "PageService.Host.Shared": {
+      "path": "host/PageService.Host.Shared/PageService.Host.Shared.abppkg",
+      "folder": "host"
+    },
+    "PageService.Web.Unified": {
+      "path": "host/PageService.Web.Unified/PageService.Web.Unified.abppkg",
+      "folder": "host"
+    },
+    "PageService.Blazor": {
+      "path": "src/PageService.Blazor/PageService.Blazor.abppkg",
+      "folder": "src"
+    },
+    "PageService.Blazor.Host": {
+      "path": "host/PageService.Blazor.Host/PageService.Blazor.Host.abppkg",
+      "folder": "host"
+    },
+    "PageService.Blazor.Server": {
+      "path": "src/PageService.Blazor.Server/PageService.Blazor.Server.abppkg",
+      "folder": "src"
+    },
+    "PageService.Blazor.WebAssembly": {
+      "path": "src/PageService.Blazor.WebAssembly/PageService.Blazor.WebAssembly.abppkg",
+      "folder": "src"
+    },
+    "PageService.Blazor.Server.Host": {
+      "path": "host/PageService.Blazor.Server.Host/PageService.Blazor.Server.Host.abppkg",
+      "folder": "host"
+    }
+  }
+}
