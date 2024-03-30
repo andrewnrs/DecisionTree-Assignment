@@ -3,10 +3,12 @@ import { CoreModule, LazyModuleFactory } from '@abp/ng.core';
 import { ThemeSharedModule } from '@abp/ng.theme.shared';
 import { PageServiceComponent } from './components/page-service.component';
 import { PageServiceRoutingModule } from './page-service-routing.module';
+import { JoditAngularModule } from 'jodit-angular';
+import { PageModule } from '@abp/ng.components/page';
 
 @NgModule({
   declarations: [PageServiceComponent],
-  imports: [CoreModule, ThemeSharedModule, PageServiceRoutingModule],
+  imports: [CoreModule, ThemeSharedModule, PageServiceRoutingModule, JoditAngularModule, PageModule],
   exports: [PageServiceComponent],
 })
 export class PageServiceModule {

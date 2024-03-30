@@ -25,13 +25,35 @@ export class PageServiceService {
       { apiName: this.apiName }
     );
   }
+
+
+  postM(input: any){
+    return this.restService.request<Page, any>({
+      method: 'POST',
+      url: '/api/page-service/pages',
+      body: input as Page
+    });
+  }
+
+  post(input: Page) {
+    return this.restService.request<Page, any>({
+      method: 'POST',
+      url: '/api/page-service/pages',
+      body: input
+    });
+  }
+}
+
+export interface PageDto{
+  title: string;
+  slug: string;
+  content: string;
+  home: boolean;
 }
 
 export interface Page{
   title: string;
   slug: string;
   content: string;
-  script: string;
-  style: string;
   home: boolean;
 }

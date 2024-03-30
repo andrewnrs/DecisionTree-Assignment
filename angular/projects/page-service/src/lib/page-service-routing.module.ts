@@ -6,7 +6,7 @@ import { PageServiceComponent } from './components/page-service.component';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
+    pathMatch: 'prefix',
     component: RouterOutletComponent,
     children: [
       {

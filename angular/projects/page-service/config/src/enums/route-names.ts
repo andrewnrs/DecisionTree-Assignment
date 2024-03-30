@@ -1,3 +1,3 @@
 export const enum ePageServiceRouteNames {
-  PageService = 'PageService',
+  PageService = 'Web Pages',
 }
