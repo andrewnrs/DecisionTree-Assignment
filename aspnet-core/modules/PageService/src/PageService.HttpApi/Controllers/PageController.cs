@@ -8,15 +8,15 @@ namespace PageService.Samples;
 [Area(PageServiceRemoteServiceConsts.ModuleName)]
 [RemoteService(Name = PageServiceRemoteServiceConsts.RemoteServiceName)]
 [Route("api/page-service/pages")]
-public class PageController(IPageAppService sampleAppService) : PageServiceController, IPageAppService
+public class PageController(IPageAppService pageAppService) : PageServiceController, IPageAppService
 {
-    private readonly IPageAppService _pageAppService = sampleAppService;
+    private readonly IPageAppService _pageAppService = pageAppService;
 
     //[Authorize]
     [HttpGet]
-    public async Task<List<PageDto>> GetAllAsync()
+    public async Task<List<PageResponseDto>> GetAllAsync([FromQuery]int skipCount = 0, [FromQuery] int maxResultCount = 10)
     {
-        return await _pageAppService.GetAllAsync();
+        return await _pageAppService.GetAllAsync(skipCount, maxResultCount);
     }
 
     //[Authorize]

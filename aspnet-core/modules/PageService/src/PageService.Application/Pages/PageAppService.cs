@@ -1,20 +1,16 @@
 ﻿using PageService.Pages;
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Threading.Tasks;
 using Volo.Abp;
-using Volo.Abp.ObjectMapping;
 
 namespace PageService.Samples;
 
 public class PageAppService(
     IPageRepository pageRepository
-        //, IObjectMapper<PageServiceAppService> objectMapper
     ) : PageServiceAppService, IPageAppService
 {
     private readonly IPageRepository pageRepository = pageRepository;
-    //private readonly IObjectMapper<PageServiceAppService> objectMapper = objectMapper;
 
     public Task<PageDto> GetAsync()
     {
@@ -41,22 +37,11 @@ public class PageAppService(
         }
     }
 
-    //public async Task<PageResponseDto> CreatePageAsync(PageDto page)
-    //{
-        //var pageEntity = Page.From(ObjectMapper.Map<PageDto, PageVo>(page));
-        //var createdEntity = await pageRepository.InsertAsync(pageEntity);
-        //return ObjectMapper.Map<Page, PageResponseDto>(createdEntity);
-    //}
-
     //[Authorize]
-    public Task<List<PageDto>> GetAllAsync()
+    public async Task<List<PageResponseDto>> GetAllAsync(int skipCount, int maxResultCount)
     {
-        return Task.FromResult(
-            new List<PageDto>() {
-                PageDto.HomePage(),
-                PageDto.AboutUs()
-            }
-        );
+        var pagedEntities = await pageRepository.GetPagedListAsync(skipCount, maxResultCount, "");
+        return ObjectMapper.Map<List<Page>, List<PageResponseDto>>(pagedEntities);
     }
 
     public Task<PageDto> GetPageBySlugAsync(string slug)

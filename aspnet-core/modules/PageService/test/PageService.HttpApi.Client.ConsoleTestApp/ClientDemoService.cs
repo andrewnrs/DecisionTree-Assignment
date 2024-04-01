@@ -11,7 +11,7 @@ namespace PageService;
 
 public class ClientDemoService : ITransientDependency
 {
-    private readonly IPageAppService _sampleAppService;
+    private readonly IPageAppService _pageAppService;
     private readonly IIdentityModelAuthenticationService _authenticationService;
     private readonly IConfiguration _configuration;
 
@@ -20,7 +20,7 @@ public class ClientDemoService : ITransientDependency
         IIdentityModelAuthenticationService authenticationService,
         IConfiguration configuration)
     {
-        _sampleAppService = sampleAppService;
+        _pageAppService = sampleAppService;
         _authenticationService = authenticationService;
         _configuration = configuration;
     }
@@ -41,7 +41,7 @@ public class ClientDemoService : ITransientDependency
         Console.WriteLine();
         Console.WriteLine($"***** {nameof(TestWithDynamicProxiesAsync)} *****");
 
-        var result = await _sampleAppService.GetAllAsync();
+        var result = await _pageAppService.GetAllAsync();
         Console.WriteLine("Result: " + result[0].Title);
 
         //result = await _sampleAppService.GetAuthorizedAsync();
