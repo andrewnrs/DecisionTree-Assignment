@@ -7,3 +7,7 @@ span  {
   font-weight: 500;
   margin-bottom: 1ch;
 }
+
+.checkbox {
+  margin-bottom: 0 !important;
+}

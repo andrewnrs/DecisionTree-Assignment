@@ -1,14 +1,3 @@
-<!--<abp-page [title]="'All Pages'">
-  <!-- to right ?? ->
-  <lib-abp-newpage></lib-abp-newpage>
-</abp-page>
--->
-<!--
-<ul>
-  <lib-abp-pagedetail *ngFor="let page of page$ | async" [slug]="page.slug" [page]="page">{{ page.title }}</lib-abp-pagedetail>
-</ul>
--->
-<!--app-header-- *ngIf="mode === 'page'"></!--app-header-->
 <div class="">
   <div class="row">
     <h3 class="table">All Pages</h3>
@@ -35,7 +24,7 @@
       </div>
     </ng-template>
 
-    <ng-template #titleTmpl let-row="row" let-column="column" let-value="value">
+    <ng-template #slugTmpl let-row="row" let-column="column" let-value="value">
         <div [routerLink]="['/','get',row?.id]">
             <div class="title">{{row?.slug}}</div>
         </div>
