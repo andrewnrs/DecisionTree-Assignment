@@ -1,13 +1,15 @@
 {
-  "name": "@page-service",
+  "name": "page-service",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=14",
-    "@angular/core": ">=14",
     "@abp/ng.core": ">=8.0.5",
-    "@abp/ng.theme.shared": ">=8.0.5"
+    "@abp/ng.theme.shared": ">=8.0.5",
+    "@angular/common": ">=14",
+    "@angular/core": ">=14"
   },
   "dependencies": {
+    "i": "^0.3.7",
+    "npm": "^10.5.0",
     "tslib": "^2.1.0"
   }
 }

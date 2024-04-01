@@ -19,9 +19,9 @@ export class PageServiceService {
     return data;
   }
 
-  homepage() {
+  getPageBySlug(slug: string) {
     return this.restService.request<void, Page>(
-      { method: 'GET', url: '/api/page-service/pages/home-page' },
+      { method: 'GET', url: '/api/page-service/pages/' + slug },
       { apiName: this.apiName }
     );
   }

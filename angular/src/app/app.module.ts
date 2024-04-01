@@ -18,6 +18,7 @@ import { AbpOAuthModule } from '@abp/ng.oauth';
 import { ThemeLeptonXModule } from '@abp/ng.theme.lepton-x';
 import { SideMenuLayoutModule } from '@abp/ng.theme.lepton-x/layouts';
 import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
+
 @NgModule({
   imports: [
     PageServiceConfigModule.forRoot(),
@@ -30,13 +31,13 @@ import { AccountLayoutModule } from '@abp/ng.theme.lepton-x/account';
     }),
     AbpOAuthModule.forRoot(),
     ThemeSharedModule.forRoot(),
-    
+
     AccountConfigModule.forRoot(),
     IdentityConfigModule.forRoot(),
     TenantManagementConfigModule.forRoot(),
     SettingManagementConfigModule.forRoot(),
-    
-    
+
+
     FeatureManagementModule.forRoot(),
               ThemeLeptonXModule.forRoot(),
               SideMenuLayoutModule.forRoot(),

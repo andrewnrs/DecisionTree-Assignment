@@ -8,9 +8,7 @@
     "build:prod": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint",
-    "postinstall": "npm run compile:ivy",
-    "compile:ivy": "yarn ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points --tsconfig './tsconfig.prod.json' --source node_modules"
+    "lint": "ng lint"
   },
   "private": true,
   "dependencies": {
@@ -32,9 +30,10 @@
     "@angular/platform-browser": "~17.0.0",
     "@angular/platform-browser-dynamic": "~17.0.0",
     "@angular/router": "~17.0.0",
+    "@volo/abp.ng.identity": "^8.0.5",
     "bootstrap-icons": "~1.8.0",
     "jodit": "^4.0.18",
-    "jodit-angular": "^1.14.2",
+    "jodit-angular": "1.13.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.14.0"

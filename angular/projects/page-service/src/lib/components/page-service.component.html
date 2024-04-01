@@ -1,62 +1,56 @@
-<abp-page [title]="'All Pages' | abpLocalization">
-
-  <!-- to right ?? -->
-  <button class="btn btn-primary" (click)="isModalOpen = true">New</button>
-
-  <!--<div id="dashboard-id">
-  </div>-->
-
+<!--<abp-page [title]="'All Pages'">
+  <!-- to right ?? ->
+  <lib-abp-newpage></lib-abp-newpage>
 </abp-page>
+-->
+<!--
+<ul>
+  <lib-abp-pagedetail *ngFor="let page of page$ | async" [slug]="page.slug" [page]="page">{{ page.title }}</lib-abp-pagedetail>
+</ul>
+-->
+<!--app-header-- *ngIf="mode === 'page'"></!--app-header-->
+<div class="">
+  <div class="row">
+    <h3 class="table">All Pages</h3>
+    <lib-abp-newpage></lib-abp-newpage>
+  </div>
+    <ngx-datatable
+      class="material"
+      [rows]="data"
+      [columns]="cols"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [columnMode]="ColumnMode.force"
+      rowHeight="auto"
+      columnWidth="auto"
+    >
+    </ngx-datatable>
 
-<abp-modal id="page-modal" [options]="{ size: 'xl' }" [(visible)]="isModalOpen" [busy]="inProgress" >
-  <ng-template #abpHeader>
-    <h3>Page</h3>
-  </ng-template>
+    <ng-template #hdrTpl let-column="column">{{ column.name }}
+    </ng-template>
 
-  <ng-template id="form-body" #abpBody>
-    <form id="pageForm" [formGroup]="pageForm" (ngSubmit)="submitForm()">
-      <div class="form-group">
-        <label for="page-title">Title</label><span> * </span>
-        <input type="text" id="title" class="form-control" formControlName="title" autofocus />
+    <ng-template #titleTmpl let-row="row" let-column="column" let-value="value">
+      <div [routerLink]="['/{{value}}','get',row?.id]">
+        <div class="title">{{row?.title}}</div>
       </div>
+    </ng-template>
 
-      <div class="form-group">
-        <label for="page-slug">Slug</label><span> * </span>
-        <input type="text" id="slug" class="form-control" formControlName="slug" />
-      </div>
-
-      <div class="form-group">
-        <label for="home">Home Page</label>
-        <div class="form-control">
-            <abp-checkbox id="home" label=" Check for Home Page" formControlName="home" checkboxId="home">
-            </abp-checkbox>
+    <ng-template #titleTmpl let-row="row" let-column="column" let-value="value">
+        <div [routerLink]="['/','get',row?.id]">
+            <div class="title">{{row?.slug}}</div>
         </div>
-      </div>
+    </ng-template>
 
-      <div class="form-group">
-        <label for="content">HTML Content</label><span> * </span>
+    <ng-template #homeTmpl let-row="row" let-column="column" let-value="value">
+      <div>
+        <input type="checkbox" >
+      </div>
+    </ng-template>
+
+    <ng-template #contentTmpl let-row="row" let-column="column" let-value="value">
         <div>
-          <jodit-editor #editor id="content"
-              [ngModelOptions]="{standalone: true}"
-              [config]="{buttonsMD: 'bold,strikethrough,underline,italic'}"
-              (onChange)="updateContent($event)"
-            ></jodit-editor>
+            <lib-abp-pagecontent [content]=value></lib-abp-pagecontent>
         </div>
-      </div>
-    </form>
-  </ng-template>
+    </ng-template>
 
-  <ng-template #abpFooter>
-    <p>Form Value: {{ pageForm.value | json }}</p>
-    <p>Form Status: {{ pageForm.status }}</p>
-
-    <button type="button" class="btn btn-secondary" abpClose>
-      Cancel
-    </button>
-
-    <button type="submit" form="pageForm" class="btn btn-primary" [disabled]="pageForm.invalid">
-      <i class="fa fa-check mr-1"></i>
-      Save
-    </button>
-  </ng-template>
-</abp-modal>
+  </div>
