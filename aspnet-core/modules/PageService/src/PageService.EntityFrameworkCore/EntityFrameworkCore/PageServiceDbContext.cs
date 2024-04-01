@@ -1,21 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PageService.Pages;
 using Volo.Abp.Data;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace PageService.EntityFrameworkCore;
 
 [ConnectionStringName(PageServiceDbProperties.ConnectionStringName)]
-public class PageServiceDbContext : AbpDbContext<PageServiceDbContext>, IPageServiceDbContext
+public class PageServiceDbContext(DbContextOptions<PageServiceDbContext> options) : AbpDbContext<PageServiceDbContext>(options), IPageServiceDbContext
 {
-    /* Add DbSet for each Aggregate Root here. Example:
-     * public DbSet<Question> Questions { get; set; }
-     */
+    private static string TablePrefix { get; set; } = AbpDbConsts.DefaultDbTablePrefix;
 
-    public PageServiceDbContext(DbContextOptions<PageServiceDbContext> options)
-        : base(options)
-    {
-
-    }
+    public DbSet<Page> Pages { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

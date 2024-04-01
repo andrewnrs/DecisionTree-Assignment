@@ -41,8 +41,8 @@ public class ClientDemoService : ITransientDependency
         Console.WriteLine();
         Console.WriteLine($"***** {nameof(TestWithDynamicProxiesAsync)} *****");
 
-        var result = await _sampleAppService.GetAsync();
-        Console.WriteLine("Result: " + result.Title);
+        var result = await _sampleAppService.GetAllAsync();
+        Console.WriteLine("Result: " + result[0].Title);
 
         //result = await _sampleAppService.GetAuthorizedAsync();
         //Console.WriteLine("Result (authorized): " + result.Title);

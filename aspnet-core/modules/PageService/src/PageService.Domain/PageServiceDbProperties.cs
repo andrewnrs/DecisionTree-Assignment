@@ -2,7 +2,7 @@
 
 public static class PageServiceDbProperties
 {
-    public static string DbTablePrefix { get; set; } = "PageService";
+    public static string DbTablePrefix { get; set; } = "PGS_";
 
     public static string? DbSchema { get; set; } = null;
 

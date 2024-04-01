@@ -1,8 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using Volo.Abp.Application.Dtos;
 
 namespace PageService.Samples;
 
-public class PageDto //: IValidatableObject
+[Serializable]
+public class PageDto : EntityDto<Guid> //: IValidatableObject
 {
     public PageDto()
     {

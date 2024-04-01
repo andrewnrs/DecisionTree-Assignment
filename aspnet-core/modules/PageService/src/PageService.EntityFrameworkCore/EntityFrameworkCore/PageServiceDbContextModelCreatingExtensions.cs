@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PageService.Pages;
 using Volo.Abp;
 
 namespace PageService.EntityFrameworkCore;
@@ -10,24 +11,21 @@ public static class PageServiceDbContextModelCreatingExtensions
     {
         Check.NotNull(builder, nameof(builder));
 
-        /* Configure all entities here. Example:
-
-        builder.Entity<Question>(b =>
+        builder.Entity<Page>(b =>
         {
-            //Configure table & schema name
-            b.ToTable(PageServiceDbProperties.DbTablePrefix + "Questions", PageServiceDbProperties.DbSchema);
+            b.ToTable(PageServiceDbProperties.DbTablePrefix + nameof(Page), "Pages");
 
-            b.ConfigureByConvention();
-
+            /* Configure all entities here. Example:
+            //b.ConfigureByConvention();
             //Properties
-            b.Property(q => q.Title).IsRequired().HasMaxLength(QuestionConsts.MaxTitleLength);
-
+            //b.Property(q => q.Title).IsRequired().HasMaxLength(QuestionConsts.MaxTitleLength);
             //Relations
-            b.HasMany(question => question.Tags).WithOne().HasForeignKey(qt => qt.QuestionId);
+            //b.HasMany(question => question.Tags).WithOne().HasForeignKey(qt => qt.QuestionId);
+            */
 
             //Indexes
             b.HasIndex(q => q.CreationTime);
+            b.HasIndex(q => q.Slug);
         });
-        */
     }
 }

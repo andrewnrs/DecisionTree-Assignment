@@ -21,7 +21,7 @@ public class PageController(IPageAppService sampleAppService) : PageServiceContr
 
     //[Authorize]
     [HttpPost]
-    public async Task<PageDto> CreatePageAsync(PageDto page)
+    public async Task<PageResponseDto> CreatePageAsync(CreatePageDto page)
     {
         return await _pageAppService.CreatePageAsync(page);
     }

@@ -13,6 +13,7 @@ using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
 using PageService.EntityFrameworkCore;
+using PageService.Pages;
 
 namespace DecisionTree.CMS.EntityFrameworkCore;
 
@@ -51,6 +52,9 @@ public class CMSDbContext :
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
+
+    // Pages Module
+    public DbSet<Page> Pages { get; set; }
 
     #endregion
 
