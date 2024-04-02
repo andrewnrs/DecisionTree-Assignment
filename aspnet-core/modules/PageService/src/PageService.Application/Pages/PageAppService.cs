@@ -36,25 +36,14 @@ public class PageAppService(
         return ObjectMapper.Map<List<Page>, List<PageResponseDto>>(pagedEntities);
     }
 
-    public Task<PageDto> UpdatePageAsync(PageDto page)
+    public async Task<PageContentDto> GetContentAsync(Guid id)
     {
-        return Task.FromResult(
-            PageDto.HomePage()
-        );
+        var page = await pageRepository.GetAsync(id);
+        return new PageContentDto(page.Content);
     }
 
-    public Task<PageDto> GetPageBySlugAsync(string slug)
+    public Task<PageDto> UpdatePageAsync(Guid id, PageDto page)
     {
-        return Task.FromResult(
-            PageDto.HomePage()
-        );
+        throw new NotImplementedException();
     }
-
-    public Task<PageContentDto> GetContentBySlugAsync(string slug)
-    {
-        return Task.FromResult(
-            new PageContentDto(PageDto.AboutUs().Content)
-        );
-    }
-
 }

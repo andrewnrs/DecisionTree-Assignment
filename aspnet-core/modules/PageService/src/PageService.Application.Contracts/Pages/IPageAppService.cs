@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp.Application.Services;
 
@@ -8,9 +9,7 @@ public interface IPageAppService : IApplicationService
 {
     Task<PageResponseDto> CreatePageAsync(CreatePageDto page);
     Task<List<PageResponseDto>> GetAllAsync(int skipCount, int maxResultCount);
+    Task<PageContentDto> GetContentAsync(Guid id);
 
-    Task<PageDto> GetPageBySlugAsync(string slug);
-    Task<PageContentDto> GetContentBySlugAsync(string slug);
-    Task<PageDto> UpdatePageAsync(PageDto page);
-    //Task<PageDto> GetHomePageAsync();
+    Task<PageDto> UpdatePageAsync(Guid id, PageDto page);
 }

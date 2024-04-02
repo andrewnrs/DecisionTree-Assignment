@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp;
@@ -20,31 +21,21 @@ public class PageController(IPageAppService pageAppService) : PageServiceControl
         return await _pageAppService.GetAllAsync(skipCount, maxResultCount);
     }
 
-    //[Authorize]
+    [Authorize]
     [HttpPost]
     public async Task<PageResponseDto> CreatePageAsync(CreatePageDto page)
     {
         return await _pageAppService.CreatePageAsync(page);
     }
 
-    //[Authorize]
-    [HttpGet("{slug}")]
-    public async Task<PageDto> GetPageBySlugAsync(string slug)
+    [Authorize]
+    [HttpGet("{id}/content")]
+    public async Task<PageContentDto> GetContentAsync(Guid id)
     {
-        return await _pageAppService.GetPageBySlugAsync(slug);
+        return await _pageAppService.GetContentAsync(id);
     }
 
-    //[Authorize]
-    [HttpGet("{slug}/content")]
-    public async Task<PageContentDto> GetContentBySlugAsync(string slug)
-    {
-        return await _pageAppService.GetContentBySlugAsync(slug);
-    }
-
-    //[Authorize]
-    [HttpPut("{slug}")]
-    public async Task<PageDto> UpdatePageAsync(PageDto page)
-    {
-        return await _pageAppService.UpdatePageAsync(page);
-    }
+    [Obsolete("Implemented on POST /pages")]
+    [HttpPut("{id}")]
+    public Task<PageDto> UpdatePageAsync(Guid id, PageDto page) => throw new NotImplementedException();
 }
