@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { PageServiceComponent } from './components/page-service.component';
+import { PageServiceComponent } from './components/pageservice/page-service.component';
 import { PageServiceService } from '@page-service';
 import { of } from 'rxjs';
 

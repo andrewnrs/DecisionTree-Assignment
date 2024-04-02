@@ -1,18 +1,17 @@
 import { NgModule, NgModuleFactory, ModuleWithProviders } from '@angular/core';
 import { CoreModule, LazyModuleFactory } from '@abp/ng.core';
 import { ThemeSharedModule } from '@abp/ng.theme.shared';
-import { PageServiceComponent } from './components/page-service.component';
-import { NewpageComponent } from './components/newpage/newpage.component';
+import { PageServiceComponent } from './components/pageservice/page-service.component';
+import { PagedetailComponent } from './components/pagedetail/pagedetail.component';
+import { PagecontentComponent } from './components/pagecontent/pagecontent.component';
 import { PageServiceRoutingModule } from './page-service-routing.module';
 import { JoditAngularModule } from 'jodit-angular';
 import { PageModule } from '@abp/ng.components/page';
-import { PagecontentComponent } from './components/pagecontent/pagecontent.component';
-import { PagedetailComponent } from './components/pagedetail/pagedetail.component';
 
 @NgModule({
-  declarations: [PageServiceComponent, NewpageComponent, PagecontentComponent, PagedetailComponent],
+  declarations: [PageServiceComponent, PagedetailComponent, PagecontentComponent],
   imports: [CoreModule, ThemeSharedModule, PageServiceRoutingModule, JoditAngularModule, PageModule],
-  exports: [PageServiceComponent, NewpageComponent, PagecontentComponent, PagedetailComponent],
+  exports: [PageServiceComponent, PagedetailComponent, PagecontentComponent],
 })
 export class PageServiceModule {
   static forChild(): ModuleWithProviders<PageServiceModule> {

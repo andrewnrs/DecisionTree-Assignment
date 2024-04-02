@@ -33,6 +33,7 @@
         <div>
           <jodit-editor #editor id="content" formControlName="content"
             (onChange)="updateContent($event)"
+            [textContent]="this.pageForm.content"
             [(ngModel)]="pageContent"
             [config]="{buttonsMD: 'bold,strikethrough,underline,italic'}"
             ></jodit-editor>
@@ -49,7 +50,7 @@
       Cancel
     </button>
 
-    <button type="submit" form="pageForm" class="btn btn-primary" [disabled]="pageForm.invalid">
+    <button type="submit" class="btn btn-primary" form="pageForm" [disabled]="pageForm.invalid">
       <i class="fa fa-check mr-1"></i>
       Save
     </button>

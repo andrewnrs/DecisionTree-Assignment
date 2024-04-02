@@ -15,7 +15,7 @@ public class PageController(IPageAppService pageAppService) : PageServiceControl
 
     [Authorize]
     [HttpGet]
-    public async Task<List<PageResponseDto>> GetAllAsync([FromQuery]int skipCount = 0, [FromQuery] int maxResultCount = 10)
+    public async Task<List<PageResponseDto>> GetAllAsync([FromQuery]int skipCount = 0, [FromQuery] int maxResultCount = 50)
     {
         return await _pageAppService.GetAllAsync(skipCount, maxResultCount);
     }

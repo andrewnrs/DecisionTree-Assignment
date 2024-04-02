@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PageServiceService } from '../../services/page-service.service';
 
 @Component({
@@ -7,17 +7,13 @@ import { PageServiceService } from '../../services/page-service.service';
   templateUrl: './pagedetail.component.html',
   styleUrl: './pagedetail.component.css'
 })
-export class PagedetailComponent implements OnInit {
+export class PagedetailComponent {
 
-  constructor(private service: PageServiceService, private formBuilder: FormBuilder) {
+  constructor(private service: PageServiceService, private formBuilder: FormBuilder, private builder: FormBuilder) {
+    this.pageForm = this.builder.group({
+    myJodit: new FormControl('')
+    });
   }
-
-  ngOnInit(): void {
-    console.log('label',this.buttonLabel);
-  }
-
-  //@Input()
-  //id: string;
 
   @Input()
   page: any;
@@ -43,7 +39,7 @@ export class PagedetailComponent implements OnInit {
       title: ['', [Validators.required, Validators.maxLength(60)]],
       slug: ['', [Validators.required, Validators.maxLength(60)]],
       isHomePage: [],
-      content: [''],
+      content: new FormControl('')
     });
 
     if(this.page != undefined){
@@ -52,22 +48,20 @@ export class PagedetailComponent implements OnInit {
       this.pageHome = this.page.isHomePage;
       this.pageContent = this.page.content;
 
-      console.log('p',this.page);
-      console.log('pc',this.pageContent);
-
       this.pageForm = this.formBuilder.group({
         id: [this.page.id],
         title: [this.page.title, [Validators.required, Validators.maxLength(60)]],
         slug: [this.page.slug, [Validators.required, Validators.maxLength(60)]],
-        isHomePage: [this.page.home],
-        content: [this.page.content],
+        isHomePage: [this.page.isHomePage],
+        content: new FormControl(''),
       });
+
+      this.pageForm.controls.content.setValue(this.page.content);
     }
   }
 
   updateContent($event: any){
-    //console.log($event);
-    this.pageForm.value.content = $event.args[0];
+    this.pageForm.controls.content.setValue($event.args[0]);
   }
 
   submitForm() {

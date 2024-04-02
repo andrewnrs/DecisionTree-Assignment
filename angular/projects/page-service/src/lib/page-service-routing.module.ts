@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterOutletComponent } from '@abp/ng.core';
 import { Routes, RouterModule } from '@angular/router';
-import { PageServiceComponent } from './components/page-service.component';
+import { PageServiceComponent } from './components/pageservice/page-service.component';
 
 const routes: Routes = [
   {

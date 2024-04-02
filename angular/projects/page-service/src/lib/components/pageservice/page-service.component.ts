@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectorRef, Input, TemplateRef, ViewChild  } from '@angular/core';
-import { PageServiceService } from '../services/page-service.service';
+import { PageServiceService } from '../../services/page-service.service';
 import { SubscriptionService } from '@abp/ng.core';
 import { ColumnMode } from '@swimlane/ngx-datatable';
 
@@ -70,13 +70,5 @@ export class PageServiceComponent implements OnInit {
     this.service.getAll().subscribe((data:any) => {
       this.data = data
     })
-  }
-
-  shouldUpdateTable(update: any){
-    console.log('UPDATING ... ',update);
-
-    if(update){
-      this.loadData();
-    }
   }
 }
