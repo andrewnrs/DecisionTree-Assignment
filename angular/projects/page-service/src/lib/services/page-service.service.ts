@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { RestService } from '@abp/ng.core';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ export class PageServiceService {
 
   constructor(private restService: RestService) {}
 
-  pages(): Observable<Page> {
+  getAll(): Observable<Page> {
     const data = this.restService.request<void, any>(
       { method: 'GET', url: '/api/page-service/pages' },
       { apiName: this.apiName },
@@ -21,37 +21,22 @@ export class PageServiceService {
 
   getPageBySlug(slug: string) {
     return this.restService.request<void, Page>(
-      { method: 'GET', url: '/api/page-service/pages/' + slug },
+      { method: 'GET', url: `/api/page-service/pages/${slug}`},
       { apiName: this.apiName }
     );
   }
 
-
-  postM(input: any){
+  post(input: any){
     return this.restService.request<Page, any>({
       method: 'POST',
       url: '/api/page-service/pages',
       body: input as Page
     });
   }
-
-  post(input: Page) {
-    return this.restService.request<Page, any>({
-      method: 'POST',
-      url: '/api/page-service/pages',
-      body: input
-    });
-  }
-}
-
-export interface PageDto{
-  title: string;
-  slug: string;
-  content: string;
-  home: boolean;
 }
 
 export interface Page{
+  id: string;
   title: string;
   slug: string;
   content: string;

@@ -1,1 +1,57 @@
-<li [innerHTML]="page.content"></li>
+
+<button class="btn btn-primary" (click)="initForm()">{{ buttonLabel }}</button>
+
+<abp-modal id="page-modal" [options]="{ size: 'xl' }" [(visible)]="isModalOpen" [busy]="inProgress" >
+  <ng-template #abpHeader>
+    <h3>Page Details</h3>
+  </ng-template>
+
+  <ng-template id="form-body" #abpBody>
+    <form id="pageForm" [formGroup]="pageForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label for="title">Title</label><span> * </span>
+        <input type="text" id="title" class="form-control" formControlName="title" [(ngModel)]="pageTitle"/>
+      </div>
+
+      <div class="form-group">
+        <label for="slug">Slug</label><span> * </span>
+        <input type="text" id="slug" class="form-control" formControlName="slug" [(ngModel)]="pageSlug"/>
+      </div>
+
+      <div class="form-group">
+        <label for="isHomePage">Home Page</label>
+        <div class="form-control">
+          <div class="mb-0 form-check">
+            <input type="checkbox" [(ngModel)]="pageHome" formControlName="isHomePage" id="isHomePage" class="form-check-input ">
+            <label class="form-check-label" for="isHomePage">Check for Home Page</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="content">HTML Content</label><span> * </span>
+        <div>
+          <jodit-editor #editor id="content" formControlName="content"
+            (onChange)="updateContent($event)"
+            [(ngModel)]="pageContent"
+            [config]="{buttonsMD: 'bold,strikethrough,underline,italic'}"
+            ></jodit-editor>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #abpFooter>
+    <p>Form Value: {{ pageForm.value | json }}</p>
+    <p>Form Status: {{ pageForm.status }}</p>
+
+    <button type="button" class="btn btn-secondary" abpClose>
+      Cancel
+    </button>
+
+    <button type="submit" form="pageForm" class="btn btn-primary" [disabled]="pageForm.invalid">
+      <i class="fa fa-check mr-1"></i>
+      Save
+    </button>
+  </ng-template>
+</abp-modal>

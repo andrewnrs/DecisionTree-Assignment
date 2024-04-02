@@ -7,11 +7,12 @@ import { PageServiceRoutingModule } from './page-service-routing.module';
 import { JoditAngularModule } from 'jodit-angular';
 import { PageModule } from '@abp/ng.components/page';
 import { PagecontentComponent } from './components/pagecontent/pagecontent.component';
+import { PagedetailComponent } from './components/pagedetail/pagedetail.component';
 
 @NgModule({
-  declarations: [PageServiceComponent, NewpageComponent, PagecontentComponent],
+  declarations: [PageServiceComponent, NewpageComponent, PagecontentComponent, PagedetailComponent],
   imports: [CoreModule, ThemeSharedModule, PageServiceRoutingModule, JoditAngularModule, PageModule],
-  exports: [PageServiceComponent, NewpageComponent],
+  exports: [PageServiceComponent, NewpageComponent, PagecontentComponent, PagedetailComponent],
 })
 export class PageServiceModule {
   static forChild(): ModuleWithProviders<PageServiceModule> {

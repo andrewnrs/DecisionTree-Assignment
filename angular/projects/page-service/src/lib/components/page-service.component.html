@@ -1,7 +1,9 @@
-<div class="">
+<abp-page>
   <div class="row">
     <h3 class="table">All Pages</h3>
-    <lib-abp-newpage></lib-abp-newpage>
+
+    <lib-abp-pagedetail [buttonLabel]="newPageBtnTxt"></lib-abp-pagedetail>
+    <!--lib-abp-newpage></!--lib-abp-newpage-->
   </div>
     <ngx-datatable
       class="material"
@@ -40,4 +42,10 @@
         </div>
     </ng-template>
 
-  </div>
+    <ng-template #editTmpl let-row="row" let-column="column" let-value="value">
+      <div>
+          <lib-abp-pagedetail [buttonLabel]="editPageBtnTxt" [page]=row></lib-abp-pagedetail>
+      </div>
+  </ng-template>
+
+  </abp-page>

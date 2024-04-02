@@ -1,22 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { PageServiceService } from '../../services/page-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-abp-newpage',
-  //standalone: true,
-  //imports: [],
   templateUrl: './newpage.component.html',
   styleUrl: './newpage.component.css',
 
 })
-export class NewpageComponent implements OnInit {
+export class NewpageComponent  {
 
   constructor(private service: PageServiceService, private formBuilder: FormBuilder) {
-  }
-
-  ngOnInit(): void {
-    return
   }
 
   inProgress: boolean;
@@ -25,7 +20,7 @@ export class NewpageComponent implements OnInit {
   pageForm = this.formBuilder.group({
     title: ['', [Validators.required, Validators.maxLength(60)]],
     slug: ['', [Validators.required, Validators.maxLength(60)]],
-    home: [],
+    isHomePage: [],
     content: [''],
   });
 
@@ -35,15 +30,10 @@ export class NewpageComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.pageForm.value);
-
     if (this.pageForm.invalid) return;
 
     this.inProgress = true;
-
-    console.log("sending:",this.pageForm.value);
-
-    this.service.postM(this.pageForm.value).subscribe(() => {
+    this.service.post(this.pageForm.value).subscribe(() => {
       this.resetForm();
     });
   }

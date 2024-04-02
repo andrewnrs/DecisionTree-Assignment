@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Volo.Abp;
 
 namespace PageService.Samples;
 
@@ -12,36 +11,36 @@ public class PageAppService(
 {
     private readonly IPageRepository pageRepository = pageRepository;
 
-    public Task<PageDto> GetAsync()
-    {
-        return Task.FromResult(
-            PageDto.HomePage()
-        );
-    }
-
     public async Task<PageResponseDto> CreatePageAsync(CreatePageDto input)
     {
-        try
+        Page? page;
+
+        if (input.Id.Equals(Guid.Empty))
         {
-            var createPage = ObjectMapper.Map<CreatePageDto, Page>(input);
-
-            var pageEntity = await pageRepository.InsertAsync(createPage);
-
-            return ObjectMapper.Map<Page, PageResponseDto>(pageEntity);
-
-            //TODO: test exception cases
+            page = ObjectMapper.Map<CreatePageDto, Page>(input);
+            page = await pageRepository.InsertAsync(page);
         }
-        catch (Exception ex)
+        else
         {
-            throw new UserFriendlyException(ex.Message);
+            page = await pageRepository.GetAsync(input.Id);
+            ObjectMapper.Map(input, page);
+            page = await pageRepository.UpdateAsync(page);
         }
+
+        return ObjectMapper.Map<Page, PageResponseDto>(page);
     }
 
-    //[Authorize]
     public async Task<List<PageResponseDto>> GetAllAsync(int skipCount, int maxResultCount)
     {
         var pagedEntities = await pageRepository.GetPagedListAsync(skipCount, maxResultCount, "");
         return ObjectMapper.Map<List<Page>, List<PageResponseDto>>(pagedEntities);
+    }
+
+    public Task<PageDto> UpdatePageAsync(PageDto page)
+    {
+        return Task.FromResult(
+            PageDto.HomePage()
+        );
     }
 
     public Task<PageDto> GetPageBySlugAsync(string slug)
@@ -58,10 +57,4 @@ public class PageAppService(
         );
     }
 
-    public Task<PageDto> UpdatePageAsync(PageDto page)
-    {
-        return Task.FromResult(
-            PageDto.HomePage()
-        );
-    }
 }

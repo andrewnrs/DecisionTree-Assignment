@@ -17,6 +17,9 @@ export class PageServiceComponent implements OnInit {
   }
   //page$: Observable<Page> = new Observable<Page>();
 
+  newPageBtnTxt = "NEW";
+  editPageBtnTxt = "EDIT";
+
   ColumnMode = ColumnMode;
 
   data = [];
@@ -26,6 +29,7 @@ export class PageServiceComponent implements OnInit {
   @ViewChild('slugTmpl', { static: true }) slugTmpl: TemplateRef<any>;
   @ViewChild('titleTmpl', { static: true }) titleTmpl: TemplateRef<any>;
   @ViewChild('contentTmpl', { static: true }) contentTmpl: TemplateRef<any>;
+  @ViewChild('editTmpl', { static: true }) editTmpl: TemplateRef<any>;
   @ViewChild('homeTmpl', { static: true }) homeTmpl: TemplateRef<any>;
   @ViewChild('hdrTpl', { static: true }) hdrTpl: TemplateRef<any>;
 
@@ -50,8 +54,12 @@ export class PageServiceComponent implements OnInit {
       {
         cellTemplate: this.contentTmpl,
         headerTemplate: this.hdrTpl,
-        width: 600,
         name: 'Content'
+      },
+      {
+        cellTemplate: this.editTmpl,
+        headerTemplate: this.hdrTpl,
+        name: 'data'
       }
     ];
 
@@ -59,9 +67,16 @@ export class PageServiceComponent implements OnInit {
   }
 
   loadData(): void {
-    this.service.pages().subscribe((data:any) => {
+    this.service.getAll().subscribe((data:any) => {
       this.data = data
     })
   }
 
+  shouldUpdateTable(update: any){
+    console.log('UPDATING ... ',update);
+
+    if(update){
+      this.loadData();
+    }
+  }
 }

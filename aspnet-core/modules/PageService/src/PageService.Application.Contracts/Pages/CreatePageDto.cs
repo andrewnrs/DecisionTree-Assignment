@@ -5,7 +5,7 @@ using Volo.Abp.Application.Dtos;
 namespace PageService.Samples;
 
 [Serializable]
-public class CreatePageDto(string title, string slug, string content, string? style, bool isHomePage) : CreationAuditedEntityDto<Guid>
+public class CreatePageDto(string title, string slug, string content, bool isHomePage) : CreationAuditedEntityDto<Guid>
 {
     [Required]
     [StringLength(60)]
@@ -20,9 +20,6 @@ public class CreatePageDto(string title, string slug, string content, string? st
     [Required]
     [StringLength(1000)]
     public string Content { get; set; } = content;
-
-    [StringLength(1000)]
-    public string? Style { get; set; } = style;
 
     public bool IsHomePage { get; set; } = isHomePage;
 }

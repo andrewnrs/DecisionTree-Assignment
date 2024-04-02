@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Volo.Abp;
@@ -12,7 +13,7 @@ public class PageController(IPageAppService pageAppService) : PageServiceControl
 {
     private readonly IPageAppService _pageAppService = pageAppService;
 
-    //[Authorize]
+    [Authorize]
     [HttpGet]
     public async Task<List<PageResponseDto>> GetAllAsync([FromQuery]int skipCount = 0, [FromQuery] int maxResultCount = 10)
     {
@@ -41,7 +42,6 @@ public class PageController(IPageAppService pageAppService) : PageServiceControl
     }
 
     //[Authorize]
-    //[Route("{slug}")] ?????????
     [HttpPut("{slug}")]
     public async Task<PageDto> UpdatePageAsync(PageDto page)
     {
