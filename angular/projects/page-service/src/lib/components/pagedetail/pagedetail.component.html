@@ -43,8 +43,10 @@
   </ng-template>
 
   <ng-template #abpFooter>
-    <p>Form Value: {{ pageForm.value | json }}</p>
-    <p>Form Status: {{ pageForm.status }}</p>
+    <button type="submit" class="btn btn-primary" form="pageForm" [disabled]="pageForm.invalid">
+      <i class="fa fa-check mr-1"></i>
+      Save
+    </button>
 
     <button type="button" class="btn btn-secondary" abpClose>
       Cancel
