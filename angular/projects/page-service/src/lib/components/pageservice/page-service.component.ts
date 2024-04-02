@@ -13,9 +13,7 @@ import { ColumnMode } from '@swimlane/ngx-datatable';
 export class PageServiceComponent implements OnInit {
 
   constructor(private service: PageServiceService, private subscription: SubscriptionService) {
-    //this.subscription.addOne(this.count$, console.log);
   }
-  //page$: Observable<Page> = new Observable<Page>();
 
   newPageBtnTxt = "NEW";
   editPageBtnTxt = "EDIT";
