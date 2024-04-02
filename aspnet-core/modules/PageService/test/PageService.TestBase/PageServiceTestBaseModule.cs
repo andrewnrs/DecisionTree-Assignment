@@ -34,8 +34,8 @@ public class PageServiceTestBaseModule : AbpModule
             using (var scope = context.ServiceProvider.CreateScope())
             {
                 await scope.ServiceProvider
-                    .GetRequiredService<IDataSeeder>()
-                    .SeedAsync();
+                    .GetRequiredService<IDataSeedContributor>()
+                    .SeedAsync(new());
             }
         });
     }

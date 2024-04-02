@@ -10,7 +10,7 @@ namespace PageService.Samples;
 [Area(PageServiceRemoteServiceConsts.ModuleName)]
 [RemoteService(Name = PageServiceRemoteServiceConsts.RemoteServiceName)]
 [Route("api/page-service/pages")]
-public class PageController(IPageAppService pageAppService) : PageServiceController, IPageAppService
+public class PageController(IPageAppService pageAppService) : PageServiceController
 {
     private readonly IPageAppService _pageAppService = pageAppService;
 

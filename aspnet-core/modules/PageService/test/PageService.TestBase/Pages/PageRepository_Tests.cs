@@ -8,12 +8,12 @@ namespace PageService.Samples;
  * Then inherit these abstract classes from EF Core & MongoDB test projects.
  * In this way, both database providers are tests with the same set tests.
  */
-public abstract class SampleRepository_Tests<TStartupModule> : PageServiceTestBase<TStartupModule>
+public abstract class PageRepository_Tests<TStartupModule> : PageServiceTestBase<TStartupModule>
     where TStartupModule : IAbpModule
 {
     //private readonly ISampleRepository _sampleRepository;
 
-    protected SampleRepository_Tests()
+    protected PageRepository_Tests()
     {
         //_sampleRepository = GetRequiredService<ISampleRepository>();
     }

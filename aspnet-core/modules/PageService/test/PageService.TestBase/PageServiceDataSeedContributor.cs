@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using PageService.Pages;
+using System;
+using System.Threading.Tasks;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Guids;
@@ -10,23 +12,24 @@ public class PageServiceDataSeedContributor : IDataSeedContributor, ITransientDe
 {
     private readonly IGuidGenerator _guidGenerator;
     private readonly ICurrentTenant _currentTenant;
+    private readonly IPageRepository _pageRepository;
 
     public PageServiceDataSeedContributor(
-        IGuidGenerator guidGenerator, ICurrentTenant currentTenant)
+        IGuidGenerator guidGenerator, ICurrentTenant currentTenant, IPageRepository pageRepository)
     {
         _guidGenerator = guidGenerator;
         _currentTenant = currentTenant;
+        _pageRepository = pageRepository;
     }
 
-    public Task SeedAsync(DataSeedContext context)
+    public async Task SeedAsync(DataSeedContext context)
     {
-        /* Instead of returning the Task.CompletedTask, you can insert your test data
-         * at this point!
-         */
-
-        using (_currentTenant.Change(context?.TenantId))
+        await _pageRepository.InsertAsync(new Page()
         {
-            return Task.CompletedTask;
-        }
+            Title = "Test 1",
+            Slug = "test",
+            IsHomePage = false,
+            Content = "content"
+        });
     }
 }

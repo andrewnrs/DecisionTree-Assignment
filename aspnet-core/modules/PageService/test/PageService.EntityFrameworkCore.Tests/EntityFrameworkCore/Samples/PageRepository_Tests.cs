@@ -2,7 +2,7 @@
 
 namespace PageService.EntityFrameworkCore.Samples;
 
-public class SampleRepository_Tests : SampleRepository_Tests<PageServiceEntityFrameworkCoreTestModule>
+public class PageRepository_Tests : PageRepository_Tests<PageServiceEntityFrameworkCoreTestModule>
 {
     /* Don't write custom repository tests here, instead write to
      * the base class.
