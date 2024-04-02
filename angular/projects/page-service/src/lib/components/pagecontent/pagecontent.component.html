@@ -1,0 +1,14 @@
+<button class="btn btn-secondary" (click)="isModalOpen = true">See HTML</button>
+
+<abp-modal id="page-content" [options]="{ size: 'xl' }" [visible]="isModalOpen">
+  <ng-template #abpHeader>
+    <h3>Page Content</h3>
+  </ng-template>
+
+  <ng-template id="form-body" #abpBody >
+    <div [innerHTML]="content"></div>
+  </ng-template>
+
+  <ng-template #abpFooter>
+  </ng-template>
+</abp-modal>

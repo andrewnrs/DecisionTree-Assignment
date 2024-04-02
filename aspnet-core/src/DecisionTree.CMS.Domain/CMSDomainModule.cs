@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using DecisionTree.CMS.MultiTenancy;
 using Volo.Abp.AuditLogging;
@@ -14,6 +14,7 @@ using Volo.Abp.PermissionManagement.Identity;
 using Volo.Abp.PermissionManagement.OpenIddict;
 using Volo.Abp.SettingManagement;
 using Volo.Abp.TenantManagement;
+using PageService;
 
 namespace DecisionTree.CMS;
 
@@ -30,7 +31,8 @@ namespace DecisionTree.CMS;
     typeof(AbpTenantManagementDomainModule),
     typeof(AbpEmailingModule)
 )]
-public class CMSDomainModule : AbpModule
+[DependsOn(typeof(PageServiceDomainModule))]
+    public class CMSDomainModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {

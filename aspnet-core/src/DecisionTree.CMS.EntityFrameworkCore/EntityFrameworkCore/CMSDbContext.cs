@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
@@ -12,6 +12,8 @@ using Volo.Abp.PermissionManagement.EntityFrameworkCore;
 using Volo.Abp.SettingManagement.EntityFrameworkCore;
 using Volo.Abp.TenantManagement;
 using Volo.Abp.TenantManagement.EntityFrameworkCore;
+using PageService.EntityFrameworkCore;
+using PageService.Pages;
 
 namespace DecisionTree.CMS.EntityFrameworkCore;
 
@@ -51,6 +53,9 @@ public class CMSDbContext :
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
 
+    // Pages Module
+    public DbSet<Page> Pages { get; set; }
+
     #endregion
 
     public CMSDbContext(DbContextOptions<CMSDbContext> options)
@@ -82,5 +87,6 @@ public class CMSDbContext :
         //    b.ConfigureByConvention(); //auto configure for the base class props
         //    //...
         //});
-    }
+        builder.ConfigurePageService();
+        }
 }

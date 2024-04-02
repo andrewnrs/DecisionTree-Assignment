@@ -30,7 +30,10 @@
     "@angular/platform-browser": "~17.0.0",
     "@angular/platform-browser-dynamic": "~17.0.0",
     "@angular/router": "~17.0.0",
+    "@volo/abp.ng.identity": "^8.0.5",
     "bootstrap-icons": "~1.8.0",
+    "jodit": "^4.0.18",
+    "jodit-angular": "1.13.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.14.0"

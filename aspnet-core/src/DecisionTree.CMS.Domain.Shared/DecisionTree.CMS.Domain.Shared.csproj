@@ -18,7 +18,7 @@
     <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Shared" Version="8.0.5" />
     <PackageReference Include="Volo.Abp.SettingManagement.Domain.Shared" Version="8.0.5" />
     <PackageReference Include="Volo.Abp.OpenIddict.Domain.Shared" Version="8.0.5" />
-  </ItemGroup>
+  <ProjectReference Include="..\..\modules\PageService\src\PageService.Domain.Shared\PageService.Domain.Shared.csproj" /></ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\CMS\*.json" />

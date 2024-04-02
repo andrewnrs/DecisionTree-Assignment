@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DecisionTree.CMS.Domain.Shared\DecisionTree.CMS.Domain.Shared.csproj" />
-  </ItemGroup>
+  <ProjectReference Include="..\..\modules\PageService\src\PageService.Application.Contracts\PageService.Application.Contracts.csproj" /></ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.ObjectExtending" Version="8.0.5" />
